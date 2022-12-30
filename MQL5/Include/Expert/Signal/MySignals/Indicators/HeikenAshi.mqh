@@ -1,5 +1,5 @@
 //+------------------------------------------------------------------+
-//|                                                        HeikenAshi.mqh |
+//|                                                   HeikenAshi.mqh |
 //|                                  Copyright 2022, MetaQuotes Ltd. |
 //|                                             https://www.mql5.com |
 //+------------------------------------------------------------------+
@@ -45,7 +45,7 @@ CiHeikenAshi::~CiHeikenAshi(void)
   {
   }
 //+------------------------------------------------------------------+
-//| Create the "Average True Range" indicator                        |
+//| Create the "Heiken Ashi" indicator                               |
 //+------------------------------------------------------------------+
 bool CiHeikenAshi::Create(const string symbol,const ENUM_TIMEFRAMES period)
   {

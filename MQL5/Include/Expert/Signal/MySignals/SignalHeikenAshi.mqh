@@ -1,5 +1,5 @@
 //+------------------------------------------------------------------+
-//|                                                    SignalHeikenAshi.mqh |
+//|                                             SignalHeikenAshi.mqh |
 //|                   Copyright 2009-2013, MetaQuotes Software Corp. |
 //|                                              http://www.mql5.com |
 //+------------------------------------------------------------------+
@@ -10,7 +10,7 @@
 //| Description of the class                                         |
 //| Title=Signals of oscillator '--- Heiken Ashi'                    |
 //| Type=SignalAdvanced                                              |
-//| Name=Relative Strength Index                                     |
+//| Name=Heiken Ashi                                                 |
 //| ShortName=HeikenAshi                                             |
 //| Class=CSignalHeikenAshi                                          |
 //| Page=signal_rsi                                                  |
@@ -19,13 +19,13 @@
 //+------------------------------------------------------------------+
 //| Class CSignalHeikenAshi.                                         |
 //| Purpose: Class of generator of trade signals based on            |
-//|          the 'Relative Strength Index' oscillator.               |
+//|          the 'Heiken Ashi'.                                      |
 //| Is derived from the CExpertSignal class.                         |
 //+------------------------------------------------------------------+
 class CSignalHeikenAshi : public CExpertSignal
   {
 protected:
-   CiHeikenAshi             m_heikenashi;            // object-oscillator
+   CiHeikenAshi             m_heikenashi;
    //--- "weights" of market models (0-100)
    int               m_pattern_0;      // model 0 "current close vs current open"
    int               m_pattern_1;      // model 1 "(with confirmation) current close vs current open + current close vs previous open"
