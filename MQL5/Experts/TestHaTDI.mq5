@@ -22,7 +22,7 @@
 //+------------------------------------------------------------------+
 //--- inputs for expert
 input string             Expert_Title                  ="TestHaTDI";    // Document name
-ulong                    Expert_MagicNumber            =22419;          //
+ulong                    Expert_MagicNumber            =22854;          //
 bool                     Expert_EveryTick              =false;          //
 //--- inputs for main signal
 input int                Signal_ThresholdOpen          =10;             // Signal threshold value to open [0...100]
@@ -31,15 +31,15 @@ input double             Signal_PriceLevel             =0.0;            // Price
 input double             Signal_StopLevel              =50.0;           // Stop Loss level (in points)
 input double             Signal_TakeLevel              =50.0;           // Take Profit level (in points)
 input int                Signal_Expiration             =4;              // Expiration of pending orders (in bars)
-input int                Signal_HaTDI_RSI_Period       =13;             // HaTDI(13,PRICE_CLOSE,34,1,2,...)
-input ENUM_APPLIED_PRICE Signal_HaTDI_RSI_Price        =PRICE_CLOSE;    // HaTDI(13,PRICE_CLOSE,34,1,2,...)
-input int                Signal_HaTDI_Volatility_Band  =34;             // HaTDI(13,PRICE_CLOSE,34,1,2,...)
-input double             Signal_HaTDI_StdDev           =1;              // HaTDI(13,PRICE_CLOSE,34,1,2,...)
-input int                Signal_HaTDI_RSI_Price_Line   =2;              // HaTDI(13,PRICE_CLOSE,34,1,2,...)
-input ENUM_MA_METHOD     Signal_HaTDI_RSI_Price_Type   =MODE_SMA;       // HaTDI(13,PRICE_CLOSE,34,1,2,...)
-input int                Signal_HaTDI_Trade_Signal_Line=7;              // HaTDI(13,PRICE_CLOSE,34,1,2,...)
-input ENUM_MA_METHOD     Signal_HaTDI_Trade_Signal_Type=MODE_SMA;       // HaTDI(13,PRICE_CLOSE,34,1,2,...)
-input ENUM_TIMEFRAMES    Signal_HaTDI_UpperTimeframe   =PERIOD_CURRENT; // HaTDI(13,PRICE_CLOSE,34,1,2,...)
+input int                Signal_HaTDI_RSI_Period       =13;             // HaTDI(13,PRICE_CLOSE,34,1,2,...) RSI_Period
+input ENUM_APPLIED_PRICE Signal_HaTDI_RSI_Price        =PRICE_CLOSE;    // HaTDI(13,PRICE_CLOSE,34,1,2,...) RSI_Price
+input int                Signal_HaTDI_Volatility_Band  =34;             // HaTDI(13,PRICE_CLOSE,34,1,2,...) Volatility_Band
+input double             Signal_HaTDI_StdDev           =1;              // HaTDI(13,PRICE_CLOSE,34,1,2,...) StdDev
+input int                Signal_HaTDI_RSI_Price_Line   =2;              // HaTDI(13,PRICE_CLOSE,34,1,2,...) RSI_Price_Line
+input ENUM_MA_METHOD     Signal_HaTDI_RSI_Price_Type   =MODE_SMA;       // HaTDI(13,PRICE_CLOSE,34,1,2,...) RSI_Price_Type
+input int                Signal_HaTDI_Trade_Signal_Line=7;              // HaTDI(13,PRICE_CLOSE,34,1,2,...) Trade_Signal_Line
+input ENUM_MA_METHOD     Signal_HaTDI_Trade_Signal_Type=MODE_SMA;       // HaTDI(13,PRICE_CLOSE,34,1,2,...) Trade_Signal_Type
+input ENUM_TIMEFRAMES    Signal_HaTDI_UpperTimeframe   =PERIOD_CURRENT; // HaTDI(13,PRICE_CLOSE,34,1,2,...) UpperTimeframe
 input double             Signal_HaTDI_Weight           =1.0;            // HaTDI(13,PRICE_CLOSE,34,1,2,...) Weight [0...1.0]
 input double             Signal_HeikenAshi_Weight      =1.0;            // Relative Strength Index Weight [0...1.0]
 //--- inputs for trailing

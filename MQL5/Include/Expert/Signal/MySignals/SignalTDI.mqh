@@ -16,15 +16,15 @@
 //| ShortName=HaTDI                                                  |
 //| Class=CTDISignal                                                 |
 //| Page=                                                            |
-//| Parameter=RSI_Period,int,13                                      |
-//| Parameter=RSI_Price,ENUM_APPLIED_PRICE,PRICE_CLOSE               |
-//| Parameter=Volatility_Band,int,34                                 |
-//| Parameter=StdDev,double,1                                        |
-//| Parameter=RSI_Price_Line,int,2                                   |
-//| Parameter=RSI_Price_Type,ENUM_MA_METHOD,MODE_SMA                 |
-//| Parameter=Trade_Signal_Line,int,7                                |
-//| Parameter=Trade_Signal_Type,ENUM_MA_METHOD,MODE_SMA              |
-//| Parameter=UpperTimeframe,ENUM_TIMEFRAMES,PERIOD_CURRENT          |
+//| Parameter=RSI_Period,int,13,RSI_Period                           |
+//| Parameter=RSI_Price,ENUM_APPLIED_PRICE,PRICE_CLOSE,RSI_Price     |
+//| Parameter=Volatility_Band,int,34,Volatility_Band                 |
+//| Parameter=StdDev,double,1,StdDev                                 |
+//| Parameter=RSI_Price_Line,int,2,RSI_Price_Line                    |
+//| Parameter=RSI_Price_Type,ENUM_MA_METHOD,MODE_SMA,RSI_Price_Type  |
+//| Parameter=Trade_Signal_Line,int,7,Trade_Signal_Line              |
+//| Parameter=Trade_Signal_Type,ENUM_MA_METHOD,MODE_SMA,Trade_Signal_Type  |
+//| Parameter=UpperTimeframe,ENUM_TIMEFRAMES,PERIOD_CURRENT,UpperTimeframe |
 //+------------------------------------------------------------------+
 // wizard description end
 
