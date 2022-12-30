@@ -62,6 +62,9 @@ public:
    bool              InitIndicators(CIndicators* indicators) override;
    int               LongCondition() override;
    int               ShortCondition() override;
+protected:
+   bool              CTDISignal::RSI_Price_Line_CrossOver(int idx);
+   bool              CTDISignal::RSI_Price_Line_CrossUnder(int idx);
   };
 
 //+------------------------------------------------------------------+
@@ -112,44 +115,62 @@ bool CTDISignal::InitIndicators(CIndicators* indicators)
 //+------------------------------------------------------------------+
 //|                                                                  |
 //+------------------------------------------------------------------+
+bool CTDISignal::RSI_Price_Line_CrossOver(int idx)
+  {
+   return m_ci.RSI_Price_Line(idx) > m_ci.Trade_Signal_Line(idx) && m_ci.RSI_Price_Line(idx+1) <= m_ci.Trade_Signal_Line(idx+1);
+  }
+
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
+bool CTDISignal::RSI_Price_Line_CrossUnder(int idx)
+  {
+   return m_ci.RSI_Price_Line(idx) < m_ci.Trade_Signal_Line(idx) && m_ci.RSI_Price_Line(idx+1) >= m_ci.Trade_Signal_Line(idx+1);
+  }
+
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
 int CTDISignal::LongCondition()
   {
    int idx = StartIndex();
-   double rsi_price_line = m_ci.RSI_Price_Line(idx);
-   double rsi_price_line1 = m_ci.RSI_Price_Line(idx+1);
-   double trade_signal_line = m_ci.Trade_Signal_Line(idx);
-   double market_base_line = m_ci.Market_Base_Line(idx);
-// go long under the same conditions as for the short-term trading but only when all lines are below 50
-   if(rsi_price_line > rsi_price_line1 && rsi_price_line > trade_signal_line && rsi_price_line > market_base_line && rsi_price_line < 50 && trade_signal_line < 50 && market_base_line < 50)
-      return m_pattern_2;
+   if(RSI_Price_Line_CrossOver(idx) || RSI_Price_Line_CrossOver(idx+1) || RSI_Price_Line_CrossOver(idx+2))
+     {
+      double rsi_price_line = m_ci.RSI_Price_Line(idx);
+      double trade_signal_line = m_ci.Trade_Signal_Line(idx);
+      double market_base_line = m_ci.Market_Base_Line(idx);
+      // go long under the same conditions as for the short-term trading but only when all lines are below 50
+      if(rsi_price_line > trade_signal_line && rsi_price_line > market_base_line && rsi_price_line < 50 && trade_signal_line < 50 && market_base_line < 50)
+         return m_pattern_2;
 
-// enter long when the green is above both the red and the yellow lines; enter short when the red one is above both the green and the yellow ones.
-   if(rsi_price_line > rsi_price_line1 && rsi_price_line > trade_signal_line && rsi_price_line > market_base_line)
-      return m_pattern_1;
+      // enter long when the green is above both the red and the yellow lines; enter short when the red one is above both the green and the yellow ones.
+      if(rsi_price_line > trade_signal_line && rsi_price_line > market_base_line)
+         return m_pattern_1;
 
-// enter long when the green line is above the red line and enter short when the red line is the above green line.
-   if(rsi_price_line > rsi_price_line1 && rsi_price_line > trade_signal_line)
-      return m_pattern_0;
-
+      // enter long when the green line is above the red line and enter short when the red line is the above green line.
+      if(rsi_price_line > trade_signal_line)
+         return m_pattern_0;
+     }
    return 0;
   }
 //+------------------------------------------------------------------+
 int CTDISignal::ShortCondition()
   {
    int idx = StartIndex();
-   double rsi_price_line = m_ci.RSI_Price_Line(idx);
-   double rsi_price_line1 = m_ci.RSI_Price_Line(idx+1);
-   double trade_signal_line = m_ci.Trade_Signal_Line(idx);
-   double market_base_line = m_ci.Market_Base_Line(idx);
-   if(rsi_price_line < rsi_price_line1 && rsi_price_line < trade_signal_line && rsi_price_line < market_base_line && rsi_price_line > 50 && trade_signal_line > 50 && market_base_line > 50)
-      return m_pattern_2;
+   if(RSI_Price_Line_CrossUnder(idx) || RSI_Price_Line_CrossUnder(idx+1) || RSI_Price_Line_CrossUnder(idx+2))
+     {
+      double rsi_price_line = m_ci.RSI_Price_Line(idx);
+      double trade_signal_line = m_ci.Trade_Signal_Line(idx);
+      double market_base_line = m_ci.Market_Base_Line(idx);
+      if(rsi_price_line < trade_signal_line && rsi_price_line < market_base_line && rsi_price_line > 50 && trade_signal_line > 50 && market_base_line > 50)
+         return m_pattern_2;
 
-   if(rsi_price_line < rsi_price_line1 && rsi_price_line < trade_signal_line && rsi_price_line < market_base_line)
-      return m_pattern_1;
+      if(rsi_price_line < trade_signal_line && rsi_price_line < market_base_line)
+         return m_pattern_1;
 
-   if(rsi_price_line < rsi_price_line1 && rsi_price_line < trade_signal_line)
-      return m_pattern_0;
-
+      if(rsi_price_line < trade_signal_line)
+         return m_pattern_0;
+     }
    return 0;
   }
 //+------------------------------------------------------------------+
