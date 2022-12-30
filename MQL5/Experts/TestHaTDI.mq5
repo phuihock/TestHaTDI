@@ -41,7 +41,7 @@ input int                Signal_HaTDI_Trade_Signal_Line=7;              // HaTDI
 input ENUM_MA_METHOD     Signal_HaTDI_Trade_Signal_Type=MODE_SMA;       // HaTDI(13,PRICE_CLOSE,34,1,2,...) Trade_Signal_Type
 input ENUM_TIMEFRAMES    Signal_HaTDI_UpperTimeframe   =PERIOD_CURRENT; // HaTDI(13,PRICE_CLOSE,34,1,2,...) UpperTimeframe
 input double             Signal_HaTDI_Weight           =1.0;            // HaTDI(13,PRICE_CLOSE,34,1,2,...) Weight [0...1.0]
-input double             Signal_HeikenAshi_Weight      =1.0;            // Relative Strength Index Weight [0...1.0]
+input double             Signal_HeikenAshi_Weight      =1.0;            // Heiken Ashi Weight [0...1.0]
 //--- inputs for trailing
 input double             Trailing_ParabolicSAR_Step    =0.02;           // Speed increment
 input double             Trailing_ParabolicSAR_Maximum =0.2;            // Maximum rate
